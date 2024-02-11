@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export const Styles = StyleSheet.create({
   pageContainerStyle: {
-    alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
     paddingHorizontal: '5%',
@@ -10,6 +9,7 @@ export const Styles = StyleSheet.create({
   headerContainerStyle: {
     flexDirection: 'row',
     marginTop: '10%',
+    alignSelf: 'center'
   },
   searchTextInputStyle: {
     width: '85%',

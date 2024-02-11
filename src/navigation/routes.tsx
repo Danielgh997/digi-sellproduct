@@ -18,7 +18,7 @@ const Routes = (): React.JSX.Element => {
   return (
     <Stack.Navigator
       screenOptions={screenOptions}
-      initialRouteName={ScreenNames.showSingleProduct}>
+      initialRouteName={ScreenNames.showListOfProducts}>
       <Stack.Screen
         name={ScreenNames.showListOfProducts}
         component={ProductList}
