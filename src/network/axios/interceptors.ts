@@ -1,4 +1,4 @@
-import {IConfig, TAuthToken, TAxios, TAxiosResponse} from './_types';
+import {IConfig, TAxios, TAxiosResponse} from './_types';
 // @ts-ignore
 import {axiosConstructor} from './instance';
 // @ts-ignore

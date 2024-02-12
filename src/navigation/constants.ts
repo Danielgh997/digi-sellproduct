@@ -1,4 +1,4 @@
 export const ScreenNames = {
-  showSingleProduct: 'showSingleProduct',
-  showListOfProducts: 'showListOfProducts',
+  singleProductPage: 'singleProductPage',
+  listOfProductsPage: 'listOfProductsPage',
 };

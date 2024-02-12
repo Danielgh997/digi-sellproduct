@@ -9,8 +9,6 @@ type TAxios = AxiosStatic | AxiosInstance;
 
 type TAxiosResponse = AxiosResponse;
 
-type TAuthToken = (token?: string | null | undefined) => void;
-
 interface IConfig {
   requestConfig: IAxiosRequestConfig;
 }
@@ -24,7 +22,6 @@ interface IAxiosRequestConfig extends AxiosRequestConfig {
 export type {
   TAxios,
   TAxiosResponse,
-  TAuthToken,
   IConfig,
   IAxiosRequestConfig,
 };

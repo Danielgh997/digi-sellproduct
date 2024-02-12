@@ -9,7 +9,7 @@ export const Styles = StyleSheet.create({
   headerContainerStyle: {
     flexDirection: 'row',
     marginTop: '10%',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   searchTextInputStyle: {
     width: '85%',
@@ -28,4 +28,24 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: '7%',
   },
+  productItemContainerStyle: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    marginVertical: '5%',
+  },
+  imageStyle: {width: '80%', height: '100%'},
+  productItemTextContainerStyle: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    height: 100,
+  },
+  loadingContainerStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  loadingTextStyle: {fontSize: 26, fontWeight: 'bold'},
 });
