@@ -12,8 +12,11 @@ import MagnifierImage from '../../assets/images/svgImages/magnifier.svg';
 import {Styles} from './styles';
 import {IProductListResponse} from '../../types/productList';
 import {getProductListApi} from '../../services/getProducts/getProductDetail';
+import {NavHandler} from '../../../App';
+import {ScreenNames} from '../../navigation/constants';
 
 const ProductList: React.FC = () => {
+  let isRefreshing: boolean = false;
   const [productListState, setProductListState] = useState<
     IProductListResponse[]
   >([]);
@@ -47,27 +50,28 @@ const ProductList: React.FC = () => {
     setSearchedItemsState(searchedItems);
   }, [searchValue, productListState]);
 
+  const navigateToProductDetail = useCallback(
+    (item: IProductListResponse) => {
+      NavHandler.push({
+        name: ScreenNames.singleProductPage,
+        params: item,
+      });
+    },
+    [NavHandler],
+  );
+
   const ProductListRenderer = useCallback((item: IProductListResponse) => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 100,
-          marginVertical: '5%',
-        }}>
+      <TouchableOpacity
+        onPress={() => navigateToProductDetail(item)}
+        style={Styles.productItemContainerStyle}>
         <View style={{flex: 1}}>
-          <Image
-            style={{width: '80%', height: '100%'}}
-            source={{uri: item.thumbnailUrl}}
-          />
+          <Image style={Styles.imageStyle} source={{uri: item.thumbnailUrl}} />
         </View>
-        <View style={{flex: 1, justifyContent: 'flex-start', height: 100}}>
+        <View style={Styles.productItemTextContainerStyle}>
           <Text>{item.title}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }, []);
 
@@ -102,11 +106,13 @@ const ProductList: React.FC = () => {
 
       <View style={{flex: 1}}>
         {productListState.length === 0 ? (
-          <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-            <Text style={{fontSize: 26, fontWeight: 'bold'}}>loading</Text>
+          <View style={Styles.loadingContainerStyle}>
+            <Text style={Styles.loadingTextStyle}>loading</Text>
           </View>
         ) : (
           <FlatList
+            onRefresh={getProductList}
+            refreshing={isRefreshing}
             contentContainerStyle={{
               width: '100%',
             }}
